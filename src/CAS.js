@@ -51,7 +51,7 @@ function CAS() {
 
 cas = new CAS();
 
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     try {
         var Algebrite = require('algebrite');
     } catch (e) {

@@ -58,7 +58,7 @@ function MaiaGPU() {
 
 gpu = new MaiaGPU();
 
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     try {
         var {GPU} = require('gpu.js');
     } catch (e) {

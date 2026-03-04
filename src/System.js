@@ -53,7 +53,7 @@ function System() {
      * @return {string}  The CSV file data.
      */
     this.createCSV = function(csvData, recordSeparator, header) {
-        if (typeof separator != 'undefined') {
+        if (typeof separator == 'undefined') {
             var separator = ',';
         }
         if (typeof csvData != 'undefined') {
@@ -228,7 +228,7 @@ function System() {
      */
     this.require = function(moduleName) {
         var moduleReference;
-        if (typeof process !== 'undefined') {
+        if (typeof process != 'undefined') {
             var moduleReference = require(moduleName);
         }
         return moduleReference;

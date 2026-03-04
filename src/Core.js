@@ -26,7 +26,7 @@ function Core() {
      * This property needs to be updated
      * with each new version of MaiaStudio.
      */
-    this.version = "3.9.11";
+    this.version = "3.9.12";
 
     this.testResult = {
         "expected": {},
@@ -1164,7 +1164,7 @@ function Core() {
             }
             for (var i = 0; i < aProperties.length; i++) {
                 var propertiesName = aProperties[i];
-                if (a[propertiesName] !== b[propertiesName]) {
+                if (a[propertiesName] != b[propertiesName]) {
                     return false;
                 }
             }

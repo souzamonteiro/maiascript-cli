@@ -70,7 +70,7 @@ function Task() {
 
 task = new Task();
 
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     try {
         var Worker = require('web-worker');
     } catch (e) {

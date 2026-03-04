@@ -150,7 +150,7 @@ function MaiaVM() {
      */
     this.run = function() {
         // Supports only the Node.js interpreter.
-        if (typeof process !== 'undefined') {
+        if (typeof process != 'undefined') {
             var command = 'node';
             var argv = process.argv.slice();
             compiledCode.xml = '';
@@ -313,7 +313,7 @@ maiavm = new MaiaVM();
  * Run MaiaScript code if this script has been invoked
  * from the command line.
  */
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     // Emulate DOM.
     const jsdom = require("jsdom");
     const {JSDOM} = jsdom;

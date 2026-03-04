@@ -6211,7 +6211,7 @@ function Core() {
      * This property needs to be updated
      * with each new version of MaiaStudio.
      */
-    this.version = "3.9.11";
+    this.version = "3.9.12";
 
     this.testResult = {
         "expected": {},
@@ -7349,7 +7349,7 @@ function Core() {
             }
             for (var i = 0; i < aProperties.length; i++) {
                 var propertiesName = aProperties[i];
-                if (a[propertiesName] !== b[propertiesName]) {
+                if (a[propertiesName] != b[propertiesName]) {
                     return false;
                 }
             }
@@ -7845,7 +7845,7 @@ function System() {
      * @return {string}  The CSV file data.
      */
     this.createCSV = function(csvData, recordSeparator, header) {
-        if (typeof separator != 'undefined') {
+        if (typeof separator == 'undefined') {
             var separator = ',';
         }
         if (typeof csvData != 'undefined') {
@@ -8020,7 +8020,7 @@ function System() {
      */
     this.require = function(moduleName) {
         var moduleReference;
-        if (typeof process !== 'undefined') {
+        if (typeof process != 'undefined') {
             var moduleReference = require(moduleName);
         }
         return moduleReference;
@@ -9332,7 +9332,7 @@ function MaiaString() {
      */
     this.camelize = function(str, firstCharToUpperCase) {
         function matchChars(match, index) {
-            if (+match == 0) {
+            if (match == 0) {
                 return "";
             } else {
                 return ((index == 0) && !firstCharToUpperCase) ? match.toLowerCase() : match.toUpperCase();
@@ -9394,7 +9394,7 @@ function MaiaString() {
                 if (this.re.not_type.test(ph.type) && this.re.not_primitive.test(ph.type) && arg instanceof Function) {
                     arg = arg();
                 }
-                if (this.re.numeric_arg.test(ph.type) && (typeof arg !== 'number' && isNaN(arg))) {
+                if (this.re.numeric_arg.test(ph.type) && (typeof arg != 'number' && isNaN(arg))) {
                     throw new TypeError(this.sprintf('Function sprintf expecting number but found %T', arg));
                 }
                 if (this.re.number.test(ph.type)) {
@@ -9484,20 +9484,20 @@ function MaiaString() {
         }
         var formatString = fmt, match, parseTree = [], argNames = 0;
         while (formatString) {
-            if ((match = this.re.text.exec(formatString)) !== null) {
+            if ((match = this.re.text.exec(formatString)) != null) {
                 parseTree.push(match[0]);
-            } else if ((match = this.re.modulo.exec(formatString)) !== null) {
+            } else if ((match = this.re.modulo.exec(formatString)) != null) {
                 parseTree.push('%');
-            } else if ((match = this.re.placeholder.exec(formatString)) !== null) {
+            } else if ((match = this.re.placeholder.exec(formatString)) != null) {
                 if (match[2]) {
                     argNames |= 1;
                     var fieldList = [], replacementField = match[2], fieldMatch = [];
-                    if ((fieldMatch = this.re.key.exec(replacementField)) !== null) {
+                    if ((fieldMatch = this.re.key.exec(replacementField)) != null) {
                         fieldList.push(fieldMatch[1]);
-                        while ((replacementField = replacementField.substring(fieldMatch[0].length)) !== '') {
-                            if ((fieldMatch = this.re.key_access.exec(replacementField)) !== null) {
+                        while ((replacementField = replacementField.substring(fieldMatch[0].length)) != '') {
+                            if ((fieldMatch = this.re.key_access.exec(replacementField)) != null) {
                                 fieldList.push(fieldMatch[1]);
-                            } else if ((fieldMatch = this.re.index_access.exec(replacementField)) !== null) {
+                            } else if ((fieldMatch = this.re.index_access.exec(replacementField)) != null) {
                                 fieldList.push(fieldMatch[1]);
                             } else {
                                 throw new SyntaxError('Function sprintf failed to parse named argument key');
@@ -10501,7 +10501,7 @@ function CAS() {
 
 cas = new CAS();
 
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     try {
         var Algebrite = require('algebrite');
     } catch (e) {
@@ -10568,7 +10568,7 @@ function MaiaGPU() {
 
 gpu = new MaiaGPU();
 
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     try {
         var {GPU} = require('gpu.js');
     } catch (e) {
@@ -10647,7 +10647,7 @@ function Task() {
 
 task = new Task();
 
-if (typeof process !== 'undefined') {
+if (typeof process != 'undefined') {
     try {
         var Worker = require('web-worker');
     } catch (e) {
